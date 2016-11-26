@@ -1,9 +1,9 @@
 <?php
 $dbconn = pg_connect("
-	host     = ec2-54-235-89-113.compute-1.amazonaws.com
-	dbname   = d4vrdl5cj9rncb
-	user     = malouijarvdhsq
-	password = tXOJrWYUOh-BTc-nQ5KxRa1V_N
+	host     = ec2-54-75-230-140.eu-west-1.compute.amazonaws.com
+	dbname   = d3fl3l4u9jn8jj
+	user     = krbcignxgtxjei
+	password = YorJUaA3ZunFSEPVlYQPa28uO4
 ")or die('Could not connect: ' . pg_last_error());
 		
 if($_GET['comand'] == 'create_database')
