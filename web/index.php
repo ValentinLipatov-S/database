@@ -11,24 +11,26 @@ if($_GET['comand'] == 'create_database')
 	$query = "CREATE TABLE database (data TEXT NOT NULL)";
 	$result = pg_query($query) or die(pg_last_error());
 }
-if((($_GET["comand"] == 'set') and (isset($_GET["data"]))))
+if($_GET["comand"] == 'set' and isset($_GET["data"]))
 {
 	$query = "INSERT INTO database (data) VALUES ('$_GET[data]')";
 	$result = pg_query($query) or die(pg_last_error());
 }
-if((($_POST["comand"] == 'set') and (isset($_POST["data"]))))
+if($_POST["comand"] == 'set' and isset($_POST["data"]))
 {
 	$query = "INSERT INTO database (data) VALUES ('$_POST[data]')";
 	$result = pg_query($query) or die(pg_last_error());
 }
 if($_GET['comand'] == 'get')
 {
+	$text = ""
 	$query = "SELECT * FROM database";
 	$result = pg_query($query) or die(pg_last_error());
 	while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) 
 	{
-		echo $line['data']
+		$text .= $line['data'];
 	}
+	echo $text;
 }
 if($_POST['comand'] == 'get')
 {
@@ -36,8 +38,9 @@ if($_POST['comand'] == 'get')
 	$result = pg_query($query) or die(pg_last_error());
 	while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) 
 	{
-		echo $line['data']
+		$text .= $line['data'];
 	}
+	echo $text;
 }
 pg_free_result($result);
 pg_close($dbconn);
