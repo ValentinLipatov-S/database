@@ -34,6 +34,7 @@ if($_GET['comand'] == 'get')
 }
 if($_POST['comand'] == 'get')
 {
+	$text = ""
 	$query = "SELECT * FROM database";
 	$result = pg_query($query) or die(pg_last_error());
 	while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) 
